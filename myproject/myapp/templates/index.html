@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проект Django</title>
+    <style>
+        h1 { color: #333; }
+        h2 { color: #555; }
+        .student { font-style: italic; color: #6c757d; }
+        th { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Назва проекту: Django</h1>
+    <h2>ПІБ студента: <span class="student">Денисюк Олег Павлович</span>, група: <span class="student">КІ-21013Б</span></h2>
+
+    <h2>Таблиці БД</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>Група</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{ student.first_name }}</td>
+                    <td>{{ student.last_name }}</td>
+                    <td>{{ student.group }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

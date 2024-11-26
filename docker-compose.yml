@@ -5,11 +5,11 @@ services:
     image: postgres:13
     container_name: postgres_db
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_USER: example_user
+      POSTGRES_PASSWORD: example_password
+      POSTGRES_DB: company_db
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+    - ./data/db:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:

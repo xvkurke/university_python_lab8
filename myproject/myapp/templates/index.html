@@ -9,27 +9,77 @@
         h2 { color: #555; }
         .student { font-style: italic; color: #6c757d; }
         th { font-weight: bold; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
     </style>
 </head>
 <body>
     <h1>Назва проекту: Django</h1>
     <h2>ПІБ студента: <span class="student">Денисюк Олег Павлович</span>, група: <span class="student">КІ-21013Б</span></h2>
 
-    <h2>Таблиці БД</h2>
-    <table border="1">
+    <h2>Таблиця: Locomotives</h2>
+    <table>
         <thead>
             <tr>
-                <th>Ім'я</th>
-                <th>Прізвище</th>
-                <th>Група</th>
+                <th>Реєстраційний номер</th>
+                <th>Депо</th>
+                <th>Тип локомотива</th>
+                <th>Рік виробництва</th>
             </tr>
         </thead>
         <tbody>
-            {% for student in students %}
+            {% for locomotive in locomotives %}
                 <tr>
-                    <td>{{ student.first_name }}</td>
-                    <td>{{ student.last_name }}</td>
-                    <td>{{ student.group }}</td>
+                    <td>{{ locomotive.reg_number }}</td>
+                    <td>{{ locomotive.depot }}</td>
+                    <td>{{ locomotive.locomotive_type }}</td>
+                    <td>{{ locomotive.year_of_manufacture }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Таблиця: Brigades</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Номер бригади</th>
+                <th>Телефон</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for brigade in brigades %}
+                <tr>
+                    <td>{{ brigade.brigade_number }}</td>
+                    <td>{{ brigade.phone }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Таблиця: Repairs</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Код ремонту</th>
+                <th>Локомотив</th>
+                <th>Тип ремонту</th>
+                <th>Дата початку</th>
+                <th>Кількість днів</th>
+                <th>Вартість за день</th>
+                <th>Бригада</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for repair in repairs %}
+                <tr>
+                    <td>{{ repair.repair_code }}</td>
+                    <td>{{ repair.reg_number.reg_number }}</td>
+                    <td>{{ repair.repair_type }}</td>
+                    <td>{{ repair.start_date }}</td>
+                    <td>{{ repair.days_required }}</td>
+                    <td>{{ repair.cost_per_day }}</td>
+                    <td>{% if repair.brigade_number %}Brigade {{ repair.brigade_number.brigade_number }}{% else %}N/A{% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>

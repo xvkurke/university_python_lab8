@@ -3,13 +3,10 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Для локального середовища
 STATIC_URL = '/myproject/myproject/static/'
 
-# Для продакшн середовища
 STATIC_ROOT = os.path.join(BASE_DIR, 'myproject/staticfiles')
 
-# Для локальних додаткових папок зі статиками
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'myproject/static'),
 ]
@@ -18,9 +15,9 @@ STATICFILES_DIRS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydatabase',
-        'USER': 'myuser',
-        'PASSWORD': 'mypassword',
+        'NAME': 'company_db',
+        'USER': 'example_user',
+        'PASSWORD': 'example_password',
         'HOST': 'db',
         'PORT': '5432',
     }
